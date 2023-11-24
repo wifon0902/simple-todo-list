@@ -1,13 +1,18 @@
-const todoList = ['siema', 'Umyc naczynia'];
+const todoList = [];
 
-let todoListHTML = '';
+renderTodoList();
 
-for (let i = 0; i < todoList.length; i++) {
-  const todo = todoList[i];
-  todoListHTML += `<p>${todo}</p>`;
+
+function renderTodoList() {
+  let todoListHTML = '';
+
+  for (let i = 0; i < todoList.length; i++) {
+    const todo = todoList[i];
+    todoListHTML += `<p>${todo}</p>`;
+  }
+  
+  document.querySelector('.js-todo-list').innerHTML = todoListHTML;
 }
-
-document.querySelector('.js-todo-list').innerHTML = todoListHTML;
 
 const button = document.querySelector('.button');
 
@@ -19,4 +24,6 @@ button.addEventListener('click', () => {
   console.log(todoList);
   
   inputElement.value = '';
+
+  renderTodoList();
 })
