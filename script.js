@@ -20,10 +20,14 @@ button.addEventListener('click', () => {
   const inputElement = document.querySelector('input');
   const name = inputElement.value;
 
-  todoList.push(name);
-  console.log(todoList);
+  if (name === '') {
+    return;
+  } else {
+    todoList.push(name);
+    console.log(todoList);
+    
+    inputElement.value = '';
   
-  inputElement.value = '';
-
-  renderTodoList();
+    renderTodoList();
+  }  
 })
