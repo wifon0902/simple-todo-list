@@ -8,8 +8,8 @@ function renderTodoList() {
 
   for (let i = 0; i < todoList.length; i++) {
     const todo = todoList[i];
-    todoListHTML += `<p>${todo}</p>`;
-  }
+    todoListHTML += `<p>${todo} <button onClick="todoList.splice(${i}, 1); renderTodoList();">Delete</button></p>`;
+    }
   
   document.querySelector('.js-todo-list').innerHTML = todoListHTML;
 }
