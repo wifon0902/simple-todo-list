@@ -1,5 +1,6 @@
-const todoList = [];
+const todoList = [{name: 'learn javascript', date: '2023-11-25'}];
 
+console.log(todoList);
 renderTodoList();
 
 
@@ -7,8 +8,10 @@ function renderTodoList() {
   let todoListHTML = '';
 
   for (let i = 0; i < todoList.length; i++) {
-    const todo = todoList[i];
-    todoListHTML += `<p>${todo} <button onClick="todoList.splice(${i}, 1); renderTodoList();">Delete</button></p>`;
+    const todoObject = todoList[i];
+    const { name } = todoObject;
+    const { date } = todoObject;
+    todoListHTML += `<p>${name} ${date}<button onClick="todoList.splice(${i}, 1); renderTodoList();">Delete</button></p>`;
     }
   
   document.querySelector('.js-todo-list').innerHTML = todoListHTML;
@@ -17,16 +20,24 @@ function renderTodoList() {
 const button = document.querySelector('.button');
 
 button.addEventListener('click', () => {
-  const inputElement = document.querySelector('input');
-  const name = inputElement.value;
+  const inputNameElement = document.querySelector('.input-name');
+  const name = inputNameElement.value;
 
-  if (name === '') {
+  const inputDateElement = document.querySelector('.input-date');
+  const date = inputDateElement.value;
+
+
+  if (name === '' || date === '') {
     return;
   } else {
-    todoList.push(name);
+    todoList.push({
+      name,
+      date
+    });
     console.log(todoList);
     
-    inputElement.value = '';
+    inputNameElement.value = '';
+    inputDateElement.value = '';
   
     renderTodoList();
   }  
