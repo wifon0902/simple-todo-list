@@ -11,13 +11,17 @@ function renderTodoList() {
     const todoObject = todoList[i];
     const { name } = todoObject;
     const { date } = todoObject;
-    todoListHTML += `<p>${name} ${date}<button onClick="todoList.splice(${i}, 1); renderTodoList();">Delete</button></p>`;
+    todoListHTML += `
+      <div>${name}</div>
+      <div>${date}</div>
+      <button class="delete-button" onClick="todoList.splice(${i}, 1); renderTodoList();">Delete</button>
+    `;
     }
   
   document.querySelector('.js-todo-list').innerHTML = todoListHTML;
 }
 
-const button = document.querySelector('.button');
+const button = document.querySelector('.add-button');
 
 button.addEventListener('click', () => {
   const inputNameElement = document.querySelector('.input-name');
